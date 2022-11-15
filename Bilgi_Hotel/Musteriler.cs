@@ -172,7 +172,7 @@ namespace Bilgi_Hotel
                 cmd.CommandText = "sp_TCMusteriGetir";
                 cmd.Connection = con;
                 cmd.Parameters.Add("@tc", txtTcAra.Text);
-
+                
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {

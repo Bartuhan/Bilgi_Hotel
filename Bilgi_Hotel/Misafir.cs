@@ -271,5 +271,24 @@ namespace Bilgi_Hotel
             dr.Close();
             con.Close();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            cmd.Parameters.Clear();
+            listView1.Items.Clear();
+            con.Open();
+            cmd.CommandText = "select o.OdaNo , o.OdaYatakTipi , o.OdaFiyat , d.DurumKategoriAd , d.DurumKategoriAciklama from Odalar O  JOIN OdaDurum od ON o.OdaId=od.OdaId JOIN DurumKategori d ON od.DurumKategoriId=d.DurumKategoriId";
+            cmd.Connection = con;
+
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                string[] row = { dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString() };
+                var satir = new ListViewItem(row);
+                listView1.Items.Add(satir);
+            }
+            dr.Close();
+            con.Close();
+        }
     }
 }

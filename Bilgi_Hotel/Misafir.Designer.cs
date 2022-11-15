@@ -38,6 +38,7 @@
             this.cmbSehir = new System.Windows.Forms.ComboBox();
             this.cmbUlke = new System.Windows.Forms.ComboBox();
             this.cmbCinsiyet = new System.Windows.Forms.ComboBox();
+            this.lblSonuc = new System.Windows.Forms.Label();
             this.dtDogumTarih = new System.Windows.Forms.DateTimePicker();
             this.txtAciklama = new System.Windows.Forms.TextBox();
             this.txtAdres = new System.Windows.Forms.TextBox();
@@ -69,7 +70,7 @@
             this.cmbOdaNo = new System.Windows.Forms.ComboBox();
             this.btnBosOda = new System.Windows.Forms.Button();
             this.btnTemizlik = new System.Windows.Forms.Button();
-            this.lblSonuc = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -184,6 +185,15 @@
             this.cmbCinsiyet.Name = "cmbCinsiyet";
             this.cmbCinsiyet.Size = new System.Drawing.Size(200, 28);
             this.cmbCinsiyet.TabIndex = 8;
+            // 
+            // lblSonuc
+            // 
+            this.lblSonuc.AutoSize = true;
+            this.lblSonuc.Location = new System.Drawing.Point(120, 385);
+            this.lblSonuc.Name = "lblSonuc";
+            this.lblSonuc.Size = new System.Drawing.Size(54, 20);
+            this.lblSonuc.TabIndex = 1;
+            this.lblSonuc.Text = "_____";
             // 
             // dtDogumTarih
             // 
@@ -437,7 +447,7 @@
             // 
             // btnBosOda
             // 
-            this.btnBosOda.Location = new System.Drawing.Point(114, 378);
+            this.btnBosOda.Location = new System.Drawing.Point(255, 378);
             this.btnBosOda.Name = "btnBosOda";
             this.btnBosOda.Size = new System.Drawing.Size(233, 41);
             this.btnBosOda.TabIndex = 14;
@@ -447,7 +457,7 @@
             // 
             // btnTemizlik
             // 
-            this.btnTemizlik.Location = new System.Drawing.Point(427, 378);
+            this.btnTemizlik.Location = new System.Drawing.Point(494, 378);
             this.btnTemizlik.Name = "btnTemizlik";
             this.btnTemizlik.Size = new System.Drawing.Size(254, 41);
             this.btnTemizlik.TabIndex = 14;
@@ -455,14 +465,15 @@
             this.btnTemizlik.UseVisualStyleBackColor = true;
             this.btnTemizlik.Click += new System.EventHandler(this.btnTemizlik_Click);
             // 
-            // lblSonuc
+            // button1
             // 
-            this.lblSonuc.AutoSize = true;
-            this.lblSonuc.Location = new System.Drawing.Point(120, 385);
-            this.lblSonuc.Name = "lblSonuc";
-            this.lblSonuc.Size = new System.Drawing.Size(54, 20);
-            this.lblSonuc.TabIndex = 1;
-            this.lblSonuc.Text = "_____";
+            this.button1.Location = new System.Drawing.Point(16, 378);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(233, 41);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "Tüm Odaları Göster";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Misafir
             // 
@@ -470,6 +481,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1392, 857);
             this.Controls.Add(this.btnTemizlik);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnBosOda);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.pictureBox1);
@@ -535,5 +547,6 @@
         private System.Windows.Forms.TextBox txtpasaport;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label lblSonuc;
+        private System.Windows.Forms.Button button1;
     }
 }
