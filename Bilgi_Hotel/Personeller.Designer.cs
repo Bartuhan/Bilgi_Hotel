@@ -33,7 +33,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -57,7 +56,6 @@
             this.txtSoyad = new System.Windows.Forms.TextBox();
             this.txtTc = new System.Windows.Forms.TextBox();
             this.dtDogum = new System.Windows.Forms.DateTimePicker();
-            this.cmbUyruk = new System.Windows.Forms.ComboBox();
             this.txtEposta = new System.Windows.Forms.TextBox();
             this.txtTelefon = new System.Windows.Forms.TextBox();
             this.txtPasaport = new System.Windows.Forms.TextBox();
@@ -78,18 +76,19 @@
             this.txtAcilNo = new System.Windows.Forms.TextBox();
             this.txtResim = new System.Windows.Forms.TextBox();
             this.grpPersonel = new System.Windows.Forms.GroupBox();
-            this.btnKaydet = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnKaydet = new System.Windows.Forms.Button();
             this.lwPersonel = new System.Windows.Forms.ListView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnYenile = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtAraTc = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
             this.btnBul = new System.Windows.Forms.Button();
+            this.cmbAraGorev = new System.Windows.Forms.ComboBox();
+            this.lblSonuc = new System.Windows.Forms.Label();
             this.grpPersonel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -114,11 +113,6 @@
             // 
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
             // 
             // label6
             // 
@@ -235,12 +229,6 @@
             resources.ApplyResources(this.dtDogum, "dtDogum");
             this.dtDogum.Name = "dtDogum";
             // 
-            // cmbUyruk
-            // 
-            this.cmbUyruk.FormattingEnabled = true;
-            resources.ApplyResources(this.cmbUyruk, "cmbUyruk");
-            this.cmbUyruk.Name = "cmbUyruk";
-            // 
             // txtEposta
             // 
             resources.ApplyResources(this.txtEposta, "txtEposta");
@@ -310,12 +298,14 @@
             this.cmbUlke.FormattingEnabled = true;
             resources.ApplyResources(this.cmbUlke, "cmbUlke");
             this.cmbUlke.Name = "cmbUlke";
+            this.cmbUlke.SelectionChangeCommitted += new System.EventHandler(this.cmbUlke_SelectionChangeCommitted);
             // 
             // cmbSehir
             // 
             this.cmbSehir.FormattingEnabled = true;
             resources.ApplyResources(this.cmbSehir, "cmbSehir");
             this.cmbSehir.Name = "cmbSehir";
+            this.cmbSehir.SelectionChangeCommitted += new System.EventHandler(this.cmbSehir_SelectionChangeCommitted);
             // 
             // cmbIlce
             // 
@@ -350,6 +340,7 @@
             this.grpPersonel.Controls.Add(this.btnKaydet);
             this.grpPersonel.Controls.Add(this.label1);
             this.grpPersonel.Controls.Add(this.txtResim);
+            this.grpPersonel.Controls.Add(this.lblSonuc);
             this.grpPersonel.Controls.Add(this.txtAdres);
             this.grpPersonel.Controls.Add(this.label31);
             this.grpPersonel.Controls.Add(this.txtAcilNo);
@@ -378,10 +369,8 @@
             this.grpPersonel.Controls.Add(this.dtIseGiris);
             this.grpPersonel.Controls.Add(this.label4);
             this.grpPersonel.Controls.Add(this.txtSicilNo);
-            this.grpPersonel.Controls.Add(this.cmbUyruk);
             this.grpPersonel.Controls.Add(this.txtMaas);
             this.grpPersonel.Controls.Add(this.label17);
-            this.grpPersonel.Controls.Add(this.label5);
             this.grpPersonel.Controls.Add(this.label13);
             this.grpPersonel.Controls.Add(this.txtSaatlik);
             this.grpPersonel.Controls.Add(this.label14);
@@ -400,11 +389,11 @@
             this.grpPersonel.Name = "grpPersonel";
             this.grpPersonel.TabStop = false;
             // 
-            // btnKaydet
+            // btnDelete
             // 
-            resources.ApplyResources(this.btnKaydet, "btnKaydet");
-            this.btnKaydet.Name = "btnKaydet";
-            this.btnKaydet.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnDelete, "btnDelete");
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // btnUpdate
             // 
@@ -412,11 +401,12 @@
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.UseVisualStyleBackColor = true;
             // 
-            // btnDelete
+            // btnKaydet
             // 
-            resources.ApplyResources(this.btnDelete, "btnDelete");
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnKaydet, "btnKaydet");
+            this.btnKaydet.Name = "btnKaydet";
+            this.btnKaydet.UseVisualStyleBackColor = true;
+            this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
             // 
             // lwPersonel
             // 
@@ -436,11 +426,12 @@
             resources.ApplyResources(this.btnYenile, "btnYenile");
             this.btnYenile.Name = "btnYenile";
             this.btnYenile.UseVisualStyleBackColor = true;
+            this.btnYenile.Click += new System.EventHandler(this.btnYenile_Click);
             // 
-            // textBox1
+            // txtAraTc
             // 
-            resources.ApplyResources(this.textBox1, "textBox1");
-            this.textBox1.Name = "textBox1";
+            resources.ApplyResources(this.txtAraTc, "txtAraTc");
+            this.txtAraTc.Name = "txtAraTc";
             // 
             // label19
             // 
@@ -449,20 +440,14 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtAraTc);
             this.groupBox1.Controls.Add(this.label21);
             this.groupBox1.Controls.Add(this.label19);
             this.groupBox1.Controls.Add(this.btnBul);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.cmbAraGorev);
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            resources.ApplyResources(this.comboBox1, "comboBox1");
-            this.comboBox1.Name = "comboBox1";
             // 
             // label21
             // 
@@ -474,6 +459,18 @@
             resources.ApplyResources(this.btnBul, "btnBul");
             this.btnBul.Name = "btnBul";
             this.btnBul.UseVisualStyleBackColor = true;
+            this.btnBul.Click += new System.EventHandler(this.btnBul_Click);
+            // 
+            // cmbAraGorev
+            // 
+            this.cmbAraGorev.FormattingEnabled = true;
+            resources.ApplyResources(this.cmbAraGorev, "cmbAraGorev");
+            this.cmbAraGorev.Name = "cmbAraGorev";
+            // 
+            // lblSonuc
+            // 
+            resources.ApplyResources(this.lblSonuc, "lblSonuc");
+            this.lblSonuc.Name = "lblSonuc";
             // 
             // Personeller
             // 
@@ -510,7 +507,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
@@ -534,7 +530,6 @@
         private System.Windows.Forms.TextBox txtSoyad;
         private System.Windows.Forms.TextBox txtTc;
         private System.Windows.Forms.DateTimePicker dtDogum;
-        private System.Windows.Forms.ComboBox cmbUyruk;
         private System.Windows.Forms.TextBox txtEposta;
         private System.Windows.Forms.TextBox txtTelefon;
         private System.Windows.Forms.TextBox txtPasaport;
@@ -561,11 +556,12 @@
         private System.Windows.Forms.ListView lwPersonel;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnYenile;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtAraTc;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Button btnBul;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbAraGorev;
+        private System.Windows.Forms.Label lblSonuc;
     }
 }
