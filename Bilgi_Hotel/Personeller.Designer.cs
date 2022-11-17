@@ -79,6 +79,7 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnKaydet = new System.Windows.Forms.Button();
+            this.lblSonuc = new System.Windows.Forms.Label();
             this.lwPersonel = new System.Windows.Forms.ListView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnYenile = new System.Windows.Forms.Button();
@@ -88,7 +89,7 @@
             this.label21 = new System.Windows.Forms.Label();
             this.btnBul = new System.Windows.Forms.Button();
             this.cmbAraGorev = new System.Windows.Forms.ComboBox();
-            this.lblSonuc = new System.Windows.Forms.Label();
+            this.btnYeniPersonel = new System.Windows.Forms.Button();
             this.grpPersonel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -400,6 +401,7 @@
             resources.ApplyResources(this.btnUpdate, "btnUpdate");
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnKaydet
             // 
@@ -408,12 +410,18 @@
             this.btnKaydet.UseVisualStyleBackColor = true;
             this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
             // 
+            // lblSonuc
+            // 
+            resources.ApplyResources(this.lblSonuc, "lblSonuc");
+            this.lblSonuc.Name = "lblSonuc";
+            // 
             // lwPersonel
             // 
             this.lwPersonel.HideSelection = false;
             resources.ApplyResources(this.lwPersonel, "lwPersonel");
             this.lwPersonel.Name = "lwPersonel";
             this.lwPersonel.UseCompatibleStateImageBehavior = false;
+            this.lwPersonel.Click += new System.EventHandler(this.lwPersonel_Click);
             // 
             // pictureBox1
             // 
@@ -467,10 +475,12 @@
             resources.ApplyResources(this.cmbAraGorev, "cmbAraGorev");
             this.cmbAraGorev.Name = "cmbAraGorev";
             // 
-            // lblSonuc
+            // btnYeniPersonel
             // 
-            resources.ApplyResources(this.lblSonuc, "lblSonuc");
-            this.lblSonuc.Name = "lblSonuc";
+            resources.ApplyResources(this.btnYeniPersonel, "btnYeniPersonel");
+            this.btnYeniPersonel.Name = "btnYeniPersonel";
+            this.btnYeniPersonel.UseVisualStyleBackColor = true;
+            this.btnYeniPersonel.Click += new System.EventHandler(this.btnYeniPersonel_Click);
             // 
             // Personeller
             // 
@@ -481,6 +491,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lwPersonel);
+            this.Controls.Add(this.btnYeniPersonel);
             this.Controls.Add(this.btnYenile);
             this.Controls.Add(this.grpPersonel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -563,5 +574,6 @@
         private System.Windows.Forms.Button btnBul;
         private System.Windows.Forms.ComboBox cmbAraGorev;
         private System.Windows.Forms.Label lblSonuc;
+        private System.Windows.Forms.Button btnYeniPersonel;
     }
 }
