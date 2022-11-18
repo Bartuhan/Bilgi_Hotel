@@ -21,6 +21,8 @@ namespace Bilgi_Hotel
         SqlCommand cmd = new SqlCommand();
 
         string odaNo = "";
+        public static DateTime odaGiris,odaCikis;
+        public static int odaID;
 
         List<KeyValuePair<int, string>> OdaTipiGetir = new List<KeyValuePair<int, string>>();
         List<KeyValuePair<int, string>> OdaNoGetir = new List<KeyValuePair<int, string>>();
@@ -68,7 +70,7 @@ namespace Bilgi_Hotel
             //Odalar Ve Durumlarını Veri Tabanından Çekip ListViewde Gösterme
             listView1.Items.Clear();
             con.Open();
-            cmd.CommandText = "select o.OdaNo , o.OdaYatakTipi , o.OdaFiyat , d.DurumKategoriAd , d.DurumKategoriAciklama , m.MisafirAd+' '+m.MisafirSoyad AS AdSoyad from Odalar O LEFT JOIN OdaDurum od ON o.OdaId=od.OdaId LEFT JOIN DurumKategori d ON od.DurumKategoriId=d.DurumKategoriId LEFT JOIN MisafirOda mo ON o.OdaId=mo.OdaId LEFT JOIN Misafir m ON mo.MisafirId=m.MisafirId ";
+            cmd.CommandText = "select o.OdaNo , o.OdaYatakTipi , o.OdaFiyat , d.DurumKategoriAd , d.DurumKategoriAciklama , m.MisafirAd+' '+m.MisafirSoyad AS AdSoyad from Odalar O LEFT JOIN OdaDurum od ON o.OdaId=od.OdaId LEFT JOIN DurumKategori d ON od.DurumKategoriId=d.DurumKategoriId LEFT JOIN MisafirOda mo ON o.OdaId=mo.OdaId LEFT JOIN Misafir m ON mo.MisafirId=m.MisafirId Order by o.OdaNo ";
             cmd.Connection = con;
 
             SqlDataReader dr2 = cmd.ExecuteReader();
@@ -171,8 +173,10 @@ namespace Bilgi_Hotel
 
         private void btnOda_Click(object sender, EventArgs e)
         {
-            odaNo = cmbOdaNo.SelectedValue.ToString();
+            odaID = (int)cmbOdaNo.SelectedValue;
             groupBox1.Enabled = true;
+            odaGiris = dtOdaGiris.Value;
+            odaCikis = dtOdaCikis.Value;
         }
 
         private void btnBosOda_Click(object sender, EventArgs e)
@@ -190,7 +194,7 @@ namespace Bilgi_Hotel
             cmd.Parameters.Clear();
             listView1.Items.Clear();
             con.Open();
-            cmd.CommandText = "select o.OdaNo , o.OdaYatakTipi , o.OdaFiyat , d.DurumKategoriAd , d.DurumKategoriAciklama from Odalar O  JOIN OdaDurum od ON o.OdaId=od.OdaId JOIN DurumKategori d ON od.DurumKategoriId=d.DurumKategoriId where d.DurumKategoriAd=@durum";
+            cmd.CommandText = "select o.OdaNo , o.OdaYatakTipi , o.OdaFiyat , d.DurumKategoriAd , d.DurumKategoriAciklama from Odalar O  JOIN OdaDurum od ON o.OdaId=od.OdaId JOIN DurumKategori d ON od.DurumKategoriId=d.DurumKategoriId where d.DurumKategoriAd=@durum Order by o.OdaNo ";
             cmd.Connection = con;
             cmd.Parameters.AddWithValue("@durum", gelen);
 
@@ -230,6 +234,7 @@ namespace Bilgi_Hotel
             lblSonuc.Text= cmd.ExecuteNonQuery().ToString() + " Adet Kayıt Eklendi";
             lblSonuc.ForeColor = Color.Green;
             con.Close();
+            
         }
 
         private void cmbUlke_SelectionChangeCommitted(object sender, EventArgs e)
@@ -277,7 +282,7 @@ namespace Bilgi_Hotel
             cmd.Parameters.Clear();
             listView1.Items.Clear();
             con.Open();
-            cmd.CommandText = "select o.OdaNo , o.OdaYatakTipi , o.OdaFiyat , d.DurumKategoriAd , d.DurumKategoriAciklama from Odalar O  JOIN OdaDurum od ON o.OdaId=od.OdaId JOIN DurumKategori d ON od.DurumKategoriId=d.DurumKategoriId";
+            cmd.CommandText = "select o.OdaNo , o.OdaYatakTipi , o.OdaFiyat , d.DurumKategoriAd , d.DurumKategoriAciklama , m.MisafirAd+' '+m.MisafirSoyad AS AdSoyad from Odalar O LEFT JOIN OdaDurum od ON o.OdaId=od.OdaId LEFT JOIN DurumKategori d ON od.DurumKategoriId=d.DurumKategoriId LEFT JOIN MisafirOda mo ON o.OdaId=mo.OdaId LEFT JOIN Misafir m ON mo.MisafirId=m.MisafirId Order by o.OdaNo";
             cmd.Connection = con;
 
             SqlDataReader dr = cmd.ExecuteReader();

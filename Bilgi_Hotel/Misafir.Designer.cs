@@ -71,6 +71,10 @@
             this.btnBosOda = new System.Windows.Forms.Button();
             this.btnTemizlik = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.dtOdaCikis = new System.Windows.Forms.DateTimePicker();
+            this.label18 = new System.Windows.Forms.Label();
+            this.dtOdaGiris = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -393,16 +397,20 @@
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.cmbOdaTipi);
             this.groupBox2.Controls.Add(this.cmbOdaNo);
-            this.groupBox2.Location = new System.Drawing.Point(322, 111);
+            this.groupBox2.Controls.Add(this.dtOdaGiris);
+            this.groupBox2.Controls.Add(this.label18);
+            this.groupBox2.Controls.Add(this.dtOdaCikis);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Location = new System.Drawing.Point(322, 37);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(404, 161);
+            this.groupBox2.Size = new System.Drawing.Size(404, 273);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Oda Seçimi";
             // 
             // btnOda
             // 
-            this.btnOda.Location = new System.Drawing.Point(159, 106);
+            this.btnOda.Location = new System.Drawing.Point(151, 170);
             this.btnOda.Name = "btnOda";
             this.btnOda.Size = new System.Drawing.Size(200, 41);
             this.btnOda.TabIndex = 14;
@@ -413,7 +421,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(31, 75);
+            this.label16.Location = new System.Drawing.Point(23, 139);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(110, 20);
             this.label16.TabIndex = 9;
@@ -422,7 +430,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(31, 42);
+            this.label10.Location = new System.Drawing.Point(23, 106);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(75, 20);
             this.label10.TabIndex = 9;
@@ -431,7 +439,7 @@
             // cmbOdaTipi
             // 
             this.cmbOdaTipi.FormattingEnabled = true;
-            this.cmbOdaTipi.Location = new System.Drawing.Point(159, 39);
+            this.cmbOdaTipi.Location = new System.Drawing.Point(151, 103);
             this.cmbOdaTipi.Name = "cmbOdaTipi";
             this.cmbOdaTipi.Size = new System.Drawing.Size(200, 28);
             this.cmbOdaTipi.TabIndex = 7;
@@ -440,7 +448,7 @@
             // cmbOdaNo
             // 
             this.cmbOdaNo.FormattingEnabled = true;
-            this.cmbOdaNo.Location = new System.Drawing.Point(159, 72);
+            this.cmbOdaNo.Location = new System.Drawing.Point(151, 136);
             this.cmbOdaNo.Name = "cmbOdaNo";
             this.cmbOdaNo.Size = new System.Drawing.Size(200, 28);
             this.cmbOdaNo.TabIndex = 8;
@@ -474,6 +482,38 @@
             this.button1.Text = "Tüm Odaları Göster";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(23, 76);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(118, 20);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "Oda Çıkış Tarihi";
+            // 
+            // dtOdaCikis
+            // 
+            this.dtOdaCikis.Location = new System.Drawing.Point(151, 71);
+            this.dtOdaCikis.Name = "dtOdaCikis";
+            this.dtOdaCikis.Size = new System.Drawing.Size(200, 26);
+            this.dtOdaCikis.TabIndex = 3;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(23, 43);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(117, 20);
+            this.label18.TabIndex = 1;
+            this.label18.Text = "Oda Giriş Tarihi";
+            // 
+            // dtOdaGiris
+            // 
+            this.dtOdaGiris.Location = new System.Drawing.Point(151, 38);
+            this.dtOdaGiris.Name = "dtOdaGiris";
+            this.dtOdaGiris.Size = new System.Drawing.Size(200, 26);
+            this.dtOdaGiris.TabIndex = 3;
             // 
             // Misafir
             // 
@@ -548,5 +588,9 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label lblSonuc;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DateTimePicker dtOdaGiris;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.DateTimePicker dtOdaCikis;
+        private System.Windows.Forms.Label label8;
     }
 }

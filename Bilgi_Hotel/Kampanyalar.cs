@@ -132,6 +132,7 @@ namespace Bilgi_Hotel
             }
             dr.Close();
             con.Close();
+            lblSonuc.Text = "";
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
