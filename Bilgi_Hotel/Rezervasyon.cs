@@ -313,5 +313,25 @@ namespace Bilgi_Hotel
             lblSonuc.ForeColor = Color.Orange;
             con.Close();
         }
+
+        private void lwRezervasyon_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "select OdaId from Odalar where odano=" + lwRezervasyon.SelectedItems[0].SubItems[4].Text;
+            cmd.Connection=con;
+            SqlDataReader dr =cmd.ExecuteReader();
+            dr.Read();
+            odaid = dr[0].ToString();
+            dr.Close();
+            con.Close();
+        }
+
+        private void btnSatis_Click(object sender, EventArgs e)
+        {
+            SatisveFatura sf = new SatisveFatura();
+            sf.sOdaID = odaid;
+
+        }
     }
 }

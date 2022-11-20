@@ -16,10 +16,11 @@ namespace Bilgi_Hotel
         {
             InitializeComponent();
         }
+        public string sOdaID;
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(Misafir.odaID.ToString() +"   "+ Misafir.odaCikis.ToString() + "   " + Misafir.odaGiris.ToString());      
+            MessageBox.Show(sOdaID.ToString());
         }
     }
 }

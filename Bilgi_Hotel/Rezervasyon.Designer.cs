@@ -75,6 +75,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.btnDetay = new System.Windows.Forms.Button();
+            this.btnSatis = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -88,6 +89,7 @@
             this.lwRezervasyon.Size = new System.Drawing.Size(1420, 447);
             this.lwRezervasyon.TabIndex = 0;
             this.lwRezervasyon.UseCompatibleStateImageBehavior = false;
+            this.lwRezervasyon.Click += new System.EventHandler(this.lwRezervasyon_Click);
             // 
             // txtTC
             // 
@@ -478,21 +480,21 @@
             // 
             // dateArabaslangic
             // 
-            this.dateArabaslangic.Location = new System.Drawing.Point(389, 277);
+            this.dateArabaslangic.Location = new System.Drawing.Point(389, 212);
             this.dateArabaslangic.Name = "dateArabaslangic";
             this.dateArabaslangic.Size = new System.Drawing.Size(227, 26);
             this.dateArabaslangic.TabIndex = 8;
             // 
             // dateArabitis
             // 
-            this.dateArabitis.Location = new System.Drawing.Point(389, 309);
+            this.dateArabitis.Location = new System.Drawing.Point(389, 244);
             this.dateArabitis.Name = "dateArabitis";
             this.dateArabitis.Size = new System.Drawing.Size(227, 26);
             this.dateArabitis.TabIndex = 8;
             // 
             // btnTarihAra
             // 
-            this.btnTarihAra.Location = new System.Drawing.Point(389, 341);
+            this.btnTarihAra.Location = new System.Drawing.Point(389, 276);
             this.btnTarihAra.Name = "btnTarihAra";
             this.btnTarihAra.Size = new System.Drawing.Size(227, 39);
             this.btnTarihAra.TabIndex = 6;
@@ -503,7 +505,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(301, 279);
+            this.label11.Location = new System.Drawing.Point(301, 214);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(78, 20);
             this.label11.TabIndex = 2;
@@ -512,7 +514,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(301, 309);
+            this.label13.Location = new System.Drawing.Point(301, 244);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(39, 20);
             this.label13.TabIndex = 2;
@@ -528,6 +530,16 @@
             this.btnDetay.UseVisualStyleBackColor = true;
             this.btnDetay.Click += new System.EventHandler(this.btnDetay_Click);
             // 
+            // btnSatis
+            // 
+            this.btnSatis.Location = new System.Drawing.Point(218, 399);
+            this.btnSatis.Name = "btnSatis";
+            this.btnSatis.Size = new System.Drawing.Size(442, 39);
+            this.btnSatis.TabIndex = 6;
+            this.btnSatis.Text = "Seçili Kayıt İle Satış İşlemi Başlat";
+            this.btnSatis.UseVisualStyleBackColor = true;
+            this.btnSatis.Click += new System.EventHandler(this.btnSatis_Click);
+            // 
             // Rezervasyon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -542,6 +554,7 @@
             this.Controls.Add(this.btnTarihAra);
             this.Controls.Add(this.btnDetay);
             this.Controls.Add(this.btnKisiAra);
+            this.Controls.Add(this.btnSatis);
             this.Controls.Add(this.btnYenile);
             this.Controls.Add(this.lwRezervasyon);
             this.Controls.Add(this.txtkisiTc);
@@ -613,5 +626,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btnDetay;
+        private System.Windows.Forms.Button btnSatis;
     }
 }

@@ -246,7 +246,7 @@
             this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe Script", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.toolStripTextBox1.ForeColor = System.Drawing.Color.Black;
             this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(189, 55);
+            this.toolStripTextBox1.Size = new System.Drawing.Size(189, 46);
             this.toolStripTextBox1.Text = "Bilgi Hotel";
             this.toolStripTextBox1.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
