@@ -24,6 +24,7 @@ namespace Bilgi_Hotel
         string musteriID = "";
         int fiyat;
         string rezervasyonID = "";
+        DateTime baslagic, bitis;
 
         List<KeyValuePair<int,string>> OdaTipiGetir = new List<KeyValuePair<int, string>>();
         List<KeyValuePair<int, string>> OdaNoGetir = new List<KeyValuePair<int, string>>();
@@ -31,6 +32,8 @@ namespace Bilgi_Hotel
 
         private void Rezervasyon_Load(object sender, EventArgs e)
         {
+            DateBaslangic.MinDate = DateTime.Today;
+
             cmd.Parameters.Clear();
             btnDetay.Enabled = false;
             btnUpdate.Enabled = false;
@@ -64,6 +67,7 @@ namespace Bilgi_Hotel
             cmbOdaTipi.DataSource = OdaTipiGetir.ToList();
             cmbOdaTipi.ValueMember = "Key";
             cmbOdaTipi.DisplayMember = "Value";
+            cmbOdaTipi.SelectedIndex = -1;
             dr.Close();
             con.Close();
 
@@ -125,7 +129,7 @@ namespace Bilgi_Hotel
             {
                 con.Open();
             }
-            
+            cmd.CommandType = CommandType.Text;
             cmd.CommandText = "Select * from Odalar where OdaId="+cmbOdaNo.SelectedValue;
             cmd.Connection=con;
 
@@ -152,43 +156,81 @@ namespace Bilgi_Hotel
 
         private void btnRezervasyonkaydet_Click(object sender, EventArgs e)
         {
+            string durum;
+            con.Open();
             cmd.Parameters.Clear();
-            musteriID = "";
-            if (txtTC.Text == String.Empty)
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_MusaitOda";
+            cmd.Connection = con;
+            cmd.Parameters.Add("@OdaID", cmbOdaNo.SelectedValue);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+            dr.Read();
+            durum = dr[0].ToString();
+            if (durum=="0")
             {
-                MessageBox.Show("Tc Numarasını Giriniz !");
+                MessageBox.Show("Seçilen Oda "+DateBaslangic.Value.ToShortDateString()+"  "+dateBitis.Value.ToShortDateString()+" Tarihleri Arası Müsait Değil");
+                dr.Close();
+                con.Close();
             }
             else
             {
-                
-                cmd.CommandText = "Select MusteriID From Musteriler where MusteriTCKimlik="+txtTC.Text;
-                cmd.Connection = con;
-                con.Open();
-                musteriID = cmd.ExecuteScalar().ToString();
+                dr.Close();
                 con.Close();
-                
+                cmd.Parameters.Clear();
+                musteriID = "";
+                if (txtTC.Text == String.Empty)
+                {
+                    MessageBox.Show("Tc Numarasını Giriniz !");
+                }
+                else
+                {
+                    cmd.Parameters.Clear();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = "Select MusteriID From Musteriler where MusteriTCKimlik=@tc";
+                    cmd.Parameters.AddWithValue("@tc", txtTC.Text);
+                    cmd.Connection = con;
+                    con.Open();
+                    musteriID = cmd.ExecuteScalar().ToString();
+                    con.Close();
 
-                con.Open();
+
+                    con.Open();
+
+
+                    cmd.Parameters.Clear();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "sp_InsertRezervasyon";
+                    cmd.Connection = con;
+                    cmd.Parameters.Add("@MusteriId", musteriID);
+                    cmd.Parameters.Add("@RezervasyonGecerlilikTarihi", DateBaslangic.Value);
+                    cmd.Parameters.Add("@RezervasyonGecerlilikSonTarihi", dateBitis.Value);
+                    cmd.Parameters.Add("@ErkenRezervasyonIndirim", Convert.ToInt32(txtErken.Text));
+                    cmd.Parameters.Add("@RezervasyonTipiId", 1);
+                    cmd.Parameters.Add("@RezervasyonAciklama", txtaciklama.Text);
+                    cmd.Parameters.Add("@RezervasyonIptalOk", "0");
+                    cmd.Parameters.Add("@odaID", odaid);
+                    lblSonuc.Text = cmd.ExecuteNonQuery().ToString() + " Adet Kayıt Eklendi";
+                    lblSonuc.ForeColor = Color.Green;
+
+                    con.Close();
+                    
+                    
+                    con.Open();
+                    cmd.Parameters.Clear();
+                    cmd.CommandType= CommandType.StoredProcedure;
+                    cmd.CommandText = "sp_OdaDurumDegistir";
+                    cmd.Connection = con;
+                    cmd.Parameters.Add("@odaID", odaid);
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    
+                    
+                    Temizle();
 
 
 
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_InsertRezervasyon";
-                cmd.Connection = con;
-                cmd.Parameters.Add("@MusteriId", musteriID);
-                cmd.Parameters.Add("@RezervasyonGecerlilikTarihi", DateBaslangic.Value);
-                cmd.Parameters.Add("@RezervasyonGecerlilikSonTarihi", dateBitis.Value);
-                cmd.Parameters.Add("@ErkenRezervasyonIndirim", Convert.ToInt32(txtErken.Text));
-                cmd.Parameters.Add("@RezervasyonTipiId", 1);
-                cmd.Parameters.Add("@RezervasyonAciklama", txtaciklama.Text);
-                cmd.Parameters.Add("@RezervasyonIptalOk", "0");
-                cmd.Parameters.Add("@odaID",odaid);
-                lblSonuc.Text = cmd.ExecuteNonQuery().ToString() + " Adet Kayıt Eklendi";
-                lblSonuc.ForeColor = Color.Green;
-                
-                con.Close();
-                Temizle();
-                
+                }
             }
             
         }
@@ -200,6 +242,8 @@ namespace Bilgi_Hotel
             txtErken.Clear();
             dateBitis.Refresh();
             DateBaslangic.Refresh();
+            cmbOdaNo.SelectedIndex = -1;
+            cmbOdaTipi.SelectedIndex = -1;
         }
 
         private void btnYenile_Click(object sender, EventArgs e)
@@ -210,6 +254,7 @@ namespace Bilgi_Hotel
             {
                 con.Open();
             }
+            cmd.CommandType = CommandType.Text;
             cmd.CommandText = "select m.MusteriAd + ' ' + m.MusteriSoyad AS AdSoyad , r.RezervasyonGecerlilikTarihi , r.RezervasyonGecerlilikSonTarihi ,m.MusteriTelefon ,o.OdaNo from Rezervasyon r JOIN MusteriRezervasyon mr ON r.RezervasyonId=mr.RezervasyonId JOIN Musteriler m ON mr.MusteriId=m.MusteriID JOIN Odalar o ON mr.OdaId = o.OdaId where RezervasyonGecerlilikTarihi>= GETDATE()";
             cmd.Connection = con;
             SqlDataReader dr = cmd.ExecuteReader();
@@ -318,20 +363,34 @@ namespace Bilgi_Hotel
         {
             con.Open();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select OdaId from Odalar where odano=" + lwRezervasyon.SelectedItems[0].SubItems[4].Text;
+            cmd.CommandText = "select o.OdaId,r.RezervasyonGecerlilikTarihi,r.RezervasyonGecerlilikSonTarihi, m.MusteriId from Rezervasyon r  JOIN MusteriRezervasyon mr ON r.RezervasyonId=mr.RezervasyonId  JOIN Musteriler m ON mr.MusteriId=m.MusteriID  JOIN Odalar o ON mr.OdaId = o.OdaId where RezervasyonGecerlilikTarihi>= GETDATE() AND odano=" + lwRezervasyon.SelectedItems[0].SubItems[4].Text;
             cmd.Connection=con;
             SqlDataReader dr =cmd.ExecuteReader();
             dr.Read();
             odaid = dr[0].ToString();
+            baslagic = Convert.ToDateTime( dr[1]);
+            bitis = Convert.ToDateTime(dr[2]);
+            musteriID=dr[3].ToString();
+
             dr.Close();
             con.Close();
+        }
+
+        private void DateBaslangic_ValueChanged(object sender, EventArgs e)
+        {
+            dateBitis.MinDate = DateBaslangic.Value;
         }
 
         private void btnSatis_Click(object sender, EventArgs e)
         {
             SatisveFatura sf = new SatisveFatura();
             sf.sOdaID = odaid;
+            sf.sBaslangic = baslagic;
+            sf.sBitis = bitis;
+            sf.sMusteriID = musteriID;
 
+            sf.MdiParent = this.ParentForm;
+            sf.Show();
         }
     }
 }

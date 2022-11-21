@@ -345,6 +345,7 @@
             this.DateBaslangic.Name = "DateBaslangic";
             this.DateBaslangic.Size = new System.Drawing.Size(200, 26);
             this.DateBaslangic.TabIndex = 3;
+            this.DateBaslangic.ValueChanged += new System.EventHandler(this.DateBaslangic_ValueChanged);
             // 
             // label5
             // 

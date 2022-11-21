@@ -29,36 +29,24 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SatisveFatura));
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSatis = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.dtBaslangıc = new System.Windows.Forms.DateTimePicker();
+            this.dtBitis = new System.Windows.Forms.DateTimePicker();
+            this.txtToplam = new System.Windows.Forms.TextBox();
+            this.cmbPansiyon = new System.Windows.Forms.ComboBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // textBox1
-            // 
-            resources.ApplyResources(this.textBox1, "textBox1");
-            this.textBox1.Name = "textBox1";
             // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
             // 
             // label6
             // 
@@ -75,17 +63,54 @@
             resources.ApplyResources(this.label8, "label8");
             this.label8.Name = "label8";
             // 
-            // button1
+            // btnSatis
             // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            resources.ApplyResources(this.btnSatis, "btnSatis");
+            this.btnSatis.Name = "btnSatis";
+            this.btnSatis.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.cmbPansiyon);
+            this.groupBox1.Controls.Add(this.btnSatis);
+            this.groupBox1.Controls.Add(this.dtBitis);
+            this.groupBox1.Controls.Add(this.dtBaslangıc);
+            this.groupBox1.Controls.Add(this.txtToplam);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.label8);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
             // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
+            // 
+            // dtBaslangıc
+            // 
+            resources.ApplyResources(this.dtBaslangıc, "dtBaslangıc");
+            this.dtBaslangıc.Name = "dtBaslangıc";
+            // 
+            // dtBitis
+            // 
+            resources.ApplyResources(this.dtBitis, "dtBitis");
+            this.dtBitis.Name = "dtBitis";
+            this.dtBitis.ValueChanged += new System.EventHandler(this.dtBitis_ValueChanged);
+            // 
+            // txtToplam
+            // 
+            resources.ApplyResources(this.txtToplam, "txtToplam");
+            this.txtToplam.Name = "txtToplam";
+            // 
+            // cmbPansiyon
+            // 
+            this.cmbPansiyon.FormattingEnabled = true;
+            resources.ApplyResources(this.cmbPansiyon, "cmbPansiyon");
+            this.cmbPansiyon.Name = "cmbPansiyon";
             // 
             // SatisveFatura
             // 
@@ -93,15 +118,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CausesValidation = false;
             this.ControlBox = false;
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -110,20 +127,24 @@
             this.ShowInTaskbar = false;
             this.TopMost = true;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.SatisveFatura_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSatis;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox cmbPansiyon;
+        private System.Windows.Forms.DateTimePicker dtBitis;
+        private System.Windows.Forms.DateTimePicker dtBaslangıc;
+        private System.Windows.Forms.TextBox txtToplam;
         private System.Windows.Forms.Label label1;
     }
 }
